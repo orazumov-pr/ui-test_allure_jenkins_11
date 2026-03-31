@@ -43,36 +43,42 @@ public class RegistrationPage {
         return this;
     }
 
+    @Step("Type first name \"{value}\"")
     public RegistrationPage typeFirstName(String value) {
         firstNameInput.setValue(value);
 
         return this;
     }
 
+    @Step("Type last name \"{value}\"")
     public RegistrationPage typeLastName(String value) {
         lastNameInput.setValue(value);
 
         return this;
     }
 
+    @Step("Type email \"{value}\"")
     public RegistrationPage typeEmail(String value) {
         emailInput.setValue(value);
 
         return this;
     }
 
+    @Step("Type gender \"{value}\"")
     public RegistrationPage setGender(String value) {
         genderContainer.$(byText(value)).click();
 
         return this;
     }
 
+    @Step("Type number \"{value}\"")
     public RegistrationPage typeNumber(String value) {
         numberInput.setValue(value);
 
         return this;
     }
 
+    @Step("Type Date of birthday \"{day}\" \"{month}\" \"{year}\"")
     public RegistrationPage setDateOfBirth(String day, String month, String year) {
         $("#dateOfBirthInput").click();
 
@@ -81,30 +87,35 @@ public class RegistrationPage {
         return this;
     }
 
+    @Step("Type subjects \"{value}\"")
     public RegistrationPage setSubjects(String value) {
         subjectContainer.setValue(value).pressEnter();
 
         return this;
     }
 
+    @Step("Type hobbies \"{value}\"")
     public RegistrationPage setHobbies(String value) {
         hobbiesContainer.$(byText(value)).click();
 
         return this;
     }
 
+    @Step("Type address \"{value}\"")
     public RegistrationPage typeAddress(String value) {
         addressInput.setValue(value);
 
         return this;
     }
 
+    @Step("Type picture \"{value}\"")
     public RegistrationPage loadPicture(String value) {
         pictureUpload.uploadFromClasspath(value);
 
         return this;
     }
 
+    @Step("Type state \"{value}\"")
     public RegistrationPage setState(String value) {
         setState.click();
         stateCityContainer.$(byText(value)).click();
@@ -112,6 +123,7 @@ public class RegistrationPage {
         return this;
     }
 
+    @Step("Type city \"{value}\"")
     public RegistrationPage setCity(String value) {
         setCity.click();
         stateCityContainer.$(byText(value)).click();
@@ -119,6 +131,7 @@ public class RegistrationPage {
         return this;
     }
 
+    @Step("Type Date of birthday \"{state}\" and \"{city}\"")
     public RegistrationPage setStateAndCity(String state, String city) {
         setState(state);
         setCity(city);
