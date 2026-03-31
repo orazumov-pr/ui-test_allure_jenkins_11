@@ -1,5 +1,6 @@
 package tests;
 
+import org.junit.jupiter.api.DisplayName;
 import pages.RegistrationPage;
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
@@ -17,12 +18,15 @@ public class RegistrationTest {
     @BeforeAll
     static void setUp() {
         Configuration.browserSize = "1920x1080";
-        Configuration.pageLoadStrategy = "eager";
         Configuration.baseUrl = "https://demoqa.com/";
         Configuration.timeout = 10000;
+//        Configuration.browser = "chrome";
+//        Configuration.browserVersion = "128.0";
+//        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
     }
 
     @Test
+    @DisplayName("Заполнение формы данными и проверочная таблица")
     void successfulRegistrationTest() {
 
         registrationPage.openPage()
