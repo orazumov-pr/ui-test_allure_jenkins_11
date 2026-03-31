@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import pages.components.CalendarComponent;
 import com.codeborne.selenide.SelenideElement;
 
@@ -31,7 +32,7 @@ public class RegistrationPage {
     private final SelenideElement submitButton = $("#submit");
 
 
-    //Actions
+    @Step("Open registration page /automation-practice-form")
     public RegistrationPage openPage() {
         open("/");
         SelenideElement formsElement = $(byText("Forms"));
