@@ -26,7 +26,7 @@ public class RegistrationTest {
     }
 
     @Test
-    @DisplayName("Заполнение формы данными и проверочная таблица")
+    @DisplayName("Filling out the form with parameters")
     void successfulRegistrationTest() {
 
         registrationPage.openPage()
