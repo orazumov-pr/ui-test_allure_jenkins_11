@@ -2,8 +2,6 @@ build/
 !**/src/main/**
 !**/src/test/**
 
-/build
-
 ### IntelliJ IDEA ###
 .idea
 .idea/*
