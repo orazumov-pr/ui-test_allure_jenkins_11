@@ -16,10 +16,10 @@ public class RegistrationTest {
     RegistrationPage registrationPage = new RegistrationPage();
     ResultTableData resultTableData = new ResultTableData();
 
-    @BeforeEach
-    void addListener() {
-        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
-    }
+//    @BeforeEach
+//    void addListener() {
+//        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
+//    }
 
     @BeforeAll
     static void setUp() {
@@ -29,6 +29,13 @@ public class RegistrationTest {
 //        Configuration.browser = "chrome";
 //        Configuration.browserVersion = "128.0";
 //       Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+
+        SelenideLogger.addListener("AllureSelenide",
+                new AllureSelenide()
+                        .screenshots(true)
+                        .savePageSource(true)
+                        .includeSelenideSteps(true)
+        );
     }
 
     @Test
@@ -69,7 +76,7 @@ public class RegistrationTest {
         Attach.pageSource();
         Attach.browserConsoleLogs();
         Attach.addVideo();
-//        Attach.attachAsText("Some file", "Some content");
+        Attach.attachAsText("Some file", "Some content");
         closeWebDriver();
     }
 }
