@@ -1,11 +1,13 @@
 package tests;
 
-import org.junit.jupiter.api.DisplayName;
+import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.selenide.AllureSelenide;
+import org.junit.jupiter.api.*;
 import pages.RegistrationPage;
 import com.codeborne.selenide.Configuration;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
 import pages.components.ResultTableData;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
+import helpers.Attach;
 
 import static tests.TestData.*;
 
@@ -14,6 +16,10 @@ public class RegistrationTest {
     RegistrationPage registrationPage = new RegistrationPage();
     ResultTableData resultTableData = new ResultTableData();
 
+    @BeforeEach
+    void addListener() {
+        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
+    }
 
     @BeforeAll
     static void setUp() {
@@ -22,7 +28,7 @@ public class RegistrationTest {
         Configuration.timeout = 10000;
 //        Configuration.browser = "chrome";
 //        Configuration.browserVersion = "128.0";
-//        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+       Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
     }
 
     @Test
@@ -55,5 +61,15 @@ public class RegistrationTest {
                 .checkField("Picture", namePicture)
                 .checkField("Address", address)
                 .checkField("State and City", state + " " + city);
+    }
+
+    @AfterEach
+    void addAttachments() {
+        Attach.screenshotAs("Last screenshot");
+        Attach.pageSource();
+        Attach.browserConsoleLogs();
+        Attach.addVideo();
+//        Attach.attachAsText("Some file", "Some content");
+        closeWebDriver();
     }
 }
