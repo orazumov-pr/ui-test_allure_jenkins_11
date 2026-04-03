@@ -7,7 +7,9 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import pages.RegistrationPage;
 import com.codeborne.selenide.Configuration;
 import pages.components.ResultTableData;
+
 import static com.codeborne.selenide.Selenide.closeWebDriver;
+
 import helpers.Attach;
 
 import java.util.Map;
@@ -30,6 +32,7 @@ public class RegistrationTest {
         Configuration.baseUrl = System.getProperty("baseUrl");  //https://demoqa.com/
         Configuration.browser = System.getProperty("browser", "chrome");
         Configuration.browserVersion = System.getProperty("browserVersion", "128.0");
+        Configuration.headless = Boolean.parseBoolean(System.getProperty("headless", "false"));
 
         String loginSelenoid = System.getProperty("loginSelenoid");
         String passwordSelenoid = System.getProperty("passwordSelenoid");
@@ -42,8 +45,6 @@ public class RegistrationTest {
         ));
         Configuration.browserCapabilities = capabilities;
         Configuration.remote = "https://" + loginSelenoid + ":" + passwordSelenoid + "@" + urlSelenoid;
-//      Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
-
     }
 
     @Test
