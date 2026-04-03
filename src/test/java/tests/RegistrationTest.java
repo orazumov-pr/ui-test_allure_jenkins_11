@@ -31,13 +31,18 @@ public class RegistrationTest {
         Configuration.browser = System.getProperty("browser", "chrome");
         Configuration.browserVersion = System.getProperty("browserVersion", "128.0");
 
+        String loginSelenoid = System.getProperty("loginSelenoid");
+        String passwordSelenoid = System.getProperty("passwordSelenoid");
+        String urlSelenoid = System.getProperty("urlSelenoid");
+
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
                 "enableVNC", true,
                 "enableVideo", true
         ));
         Configuration.browserCapabilities = capabilities;
-        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+        Configuration.remote = "https://" + loginSelenoid + ":" + passwordSelenoid + "@" + urlSelenoid;
+//      Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
 
     }
 
