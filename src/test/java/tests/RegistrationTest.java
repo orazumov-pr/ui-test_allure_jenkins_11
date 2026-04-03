@@ -19,10 +19,10 @@ public class RegistrationTest {
     RegistrationPage registrationPage = new RegistrationPage();
     ResultTableData resultTableData = new ResultTableData();
 
-//    @BeforeEach
-//    void addListener() {
-//        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
-//    }
+    @BeforeEach
+    void addListener() {
+        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
+    }
 
     @BeforeAll
     static void setUp() {
